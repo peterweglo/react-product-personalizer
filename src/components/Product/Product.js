@@ -21,6 +21,20 @@ const Product = (props) => {
     ];
   };
 
+  const getPrice = () => {
+    const size = props.sizes.find((size) => size.name === currentSize);
+    return props.basePrice + size.additionalPrice;
+  };
+
+  const addToCart = (e) => {
+    e.preventDefault();
+    console.log(
+      `Summary \n==============\nName: ${
+        props.title
+      }\nPrice: ${getPrice()}\nSize: ${currentSize}\nColor: ${currentColor}`
+    );
+  };
+
   return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
@@ -33,7 +47,7 @@ const Product = (props) => {
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
-          <span className={styles.price}>Price: {props.basePrice}$</span>
+          <span className={styles.price}>Price: {getPrice()}$</span>
         </header>
         <form>
           <div className={styles.sizes}>
@@ -50,21 +64,6 @@ const Product = (props) => {
                   </button>
                 </li>
               ))}
-
-              {/* <li>
-                <button type='button' className={styles.active}>
-                  S
-                </button>
-              </li>
-              <li>
-                <button type='button'>M</button>
-              </li>
-              <li>
-                <button type='button'>L</button>
-              </li>
-              <li>
-                <button type='button'>XL</button>
-              </li> */}
             </ul>
           </div>
           <div className={styles.colors}>
@@ -82,23 +81,9 @@ const Product = (props) => {
                   />
                 </li>
               ))}
-
-              {/*               
-              <li>
-                <button
-                  type='button'
-                  className={clsx(styles.colorBlack, styles.active)}
-                />
-              </li>
-              <li>
-                <button type='button' className={clsx(styles.colorRed)} />
-              </li>
-              <li>
-                <button type='button' className={clsx(styles.colorWhite)} />
-              </li> */}
             </ul>
           </div>
-          <Button className={styles.button}>
+          <Button className={styles.button} onClick={addToCart}>
             <span className='fa fa-shopping-cart' />
           </Button>
         </form>
