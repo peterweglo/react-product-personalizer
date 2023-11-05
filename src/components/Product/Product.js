@@ -4,6 +4,7 @@ import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import ProductImage from '../ProductImage/ProductImage';
+import ProductForm from '../ProductForm/ProductForm';
 
 const propTypes = {
   name: PropTypes.string.isRequired,
@@ -43,12 +44,24 @@ const Product = (props) => {
         name={props.name}
         currentColor={currentColor}
       />
+
       <div>
         <header>
           <h2 className={styles.name}>{props.title}</h2>
           <span className={styles.price}>Price: {getPrice()}$</span>
         </header>
-        <form>
+        <ProductForm
+          title={props.title}
+          sizes={props.sizes}
+          currentSize={currentSize}
+          currentColor={currentColor}
+          setCurrentColor={setCurrentColor}
+          prepareColorClassName={prepareColorClassName}
+          setCurrentSize={setCurrentSize}
+          addToCart={addToCart}
+          colors={props.colors}
+        />
+        {/* <form>
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
@@ -85,7 +98,7 @@ const Product = (props) => {
           <Button className={styles.button} onClick={addToCart}>
             <span className='fa fa-shopping-cart' />
           </Button>
-        </form>
+        </form> */}
       </div>
     </article>
   );
