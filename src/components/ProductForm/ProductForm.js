@@ -16,42 +16,6 @@ const ProductForm = (props) => {
         currentColor={props.currentColor}
         setCurrentColor={props.setCurrentColor}
       />
-
-      {/* <div className={styles.sizes}>
-        <h3 className={styles.optionLabel}>Sizes</h3>
-        <ul className={styles.choices}>
-          {props.sizes.map((size) => (
-            <li>
-              <button
-                type='button'
-                className={clsx(
-                  size.name === props.currentSize && styles.active
-                )}
-                onClick={() => props.setCurrentSize(size.name)}
-              >
-                {size.name}
-              </button>
-            </li>
-          ))}
-        </ul>
-      </div> */}
-      {/* <div className={styles.colors}>
-        <h3 className={styles.optionLabel}>Colors</h3>
-        <ul className={styles.choices}>
-          {props.colors.map((color) => (
-            <li>
-              <button
-                type='button'
-                className={clsx(
-                  props.prepareColorClassName(color),
-                  props.currentColor === color && styles.active
-                )}
-                onClick={() => props.setCurrentColor(color)}
-              />
-            </li>
-          ))}
-        </ul>
-      </div> */}
       <Button className={styles.button} onClick={props.addToCart}>
         <span className='fa fa-shopping-cart' />
       </Button>

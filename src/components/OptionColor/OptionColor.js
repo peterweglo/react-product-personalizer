@@ -14,7 +14,7 @@ const OptionColor = (props) => {
       <h3 className={styles.optionLabel}>Colors</h3>
       <ul className={styles.choices}>
         {props.colors.map((color) => (
-          <li>
+          <li key={color}>
             <button
               type='button'
               className={clsx(

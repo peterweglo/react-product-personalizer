@@ -1,6 +1,4 @@
 import styles from './Product.module.scss';
-import clsx from 'clsx';
-import Button from '../Button/Button';
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import ProductImage from '../ProductImage/ProductImage';
@@ -17,11 +15,6 @@ const propTypes = {
 const Product = (props) => {
   const [currentColor, setCurrentColor] = useState(props.colors[0]);
   const [currentSize, setCurrentSize] = useState(props.sizes[0].name);
-  const prepareColorClassName = (color) => {
-    return styles[
-      'color' + color[0].toUpperCase() + color.substr(1).toLowerCase()
-    ];
-  };
 
   const getPrice = () => {
     const size = props.sizes.find((size) => size.name === currentSize);
@@ -56,49 +49,10 @@ const Product = (props) => {
           currentSize={currentSize}
           currentColor={currentColor}
           setCurrentColor={setCurrentColor}
-          prepareColorClassName={prepareColorClassName}
           setCurrentSize={setCurrentSize}
           addToCart={addToCart}
           colors={props.colors}
         />
-        {/* <form>
-          <div className={styles.sizes}>
-            <h3 className={styles.optionLabel}>Sizes</h3>
-            <ul className={styles.choices}>
-              {props.sizes.map((size) => (
-                <li>
-                  <button
-                    type='button'
-                    className={clsx(size.name === currentSize && styles.active)}
-                    onClick={() => setCurrentSize(size.name)}
-                  >
-                    {size.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className={styles.colors}>
-            <h3 className={styles.optionLabel}>Colors</h3>
-            <ul className={styles.choices}>
-              {props.colors.map((color) => (
-                <li>
-                  <button
-                    type='button'
-                    className={clsx(
-                      prepareColorClassName(color),
-                      currentColor === color && styles.active
-                    )}
-                    onClick={() => setCurrentColor(color)}
-                  />
-                </li>
-              ))}
-            </ul>
-          </div>
-          <Button className={styles.button} onClick={addToCart}>
-            <span className='fa fa-shopping-cart' />
-          </Button>
-        </form> */}
       </div>
     </article>
   );
