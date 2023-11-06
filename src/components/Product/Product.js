@@ -4,14 +4,6 @@ import { useState } from 'react';
 import ProductImage from '../ProductImage/ProductImage';
 import ProductForm from '../ProductForm/ProductForm';
 
-const propTypes = {
-  name: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  basePrice: PropTypes.number.isRequired,
-  sizes: PropTypes.array.isRequired,
-  colors: PropTypes.array.isRequired,
-};
-
 const Product = (props) => {
   const [currentColor, setCurrentColor] = useState(props.colors[0]);
   const [currentSize, setCurrentSize] = useState(props.sizes[0].name);
@@ -58,6 +50,12 @@ const Product = (props) => {
   );
 };
 
-Product.propTypes = propTypes;
+Product.propTypes = {
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  basePrice: PropTypes.number.isRequired,
+  sizes: PropTypes.array.isRequired,
+  colors: PropTypes.array.isRequired,
+};
 
 export default Product;

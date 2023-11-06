@@ -1,5 +1,6 @@
 import styles from './Button.module.scss';
 import clsx from 'clsx';
+import PropTypes from 'prop-types';
 
 const Button = (props) => {
   return (
@@ -10,6 +11,10 @@ const Button = (props) => {
       {props.children}
     </button>
   );
+};
+
+Button.propTypes = {
+  onClick: PropTypes.func.isRequired,
 };
 
 export default Button;
